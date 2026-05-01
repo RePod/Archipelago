@@ -125,7 +125,7 @@ def main(args=None) -> tuple[argparse.Namespace, int]:
     player_id: int = 1
     player_files: dict[int, str] = {}
     player_errors: list[str] = []
-    allow_quantity = args.allow_quantity
+    allow_quantity = getattr(args, "allow_quantity", False)
     for file in os.scandir(args.player_files_path):
         fname = file.name
         if file.is_file() and not fname.startswith(".") and not fname.lower().endswith(".ini") and \
